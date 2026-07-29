@@ -1,0 +1,2772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatter Kid - Aprende Inglés Divirtiéndote</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos actualizados para niños */
+        :root {
+            --primary: #FF6B6B; /* Rosa vibrante */
+            --secondary: #4ECDC4; /* Verde azulado */
+            --accent: #FFD166; /* Amarillo */
+            --light: #F7FFF7; /* Blanco verdoso muy claro */
+            --dark: #1A535C; /* Azul oscuro */
+            --gray: #E0E0E0;
+            --premium: #6A0572; /* Púrpura */
+            --success: #06D6A0; /* Verde brillante */
+            --warning: #FF9E1B; /* Naranja */
+            --animal: #118AB2; /* Azul medio */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', 'Comic Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="5" fill="%23FFD166" opacity="0.3"/><circle cx="80" cy="30" r="7" fill="%234ECDC4" opacity="0.3"/><circle cx="40" cy="70" r="6" fill="%23FF6B6B" opacity="0.3"/><circle cx="70" cy="80" r="4" fill="%23118AB2" opacity="0.3"/></svg>');
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 5px solid var(--accent);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 32px;
+            font-family: 'Fredoka One', cursive;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            color: var(--dark);
+            margin-top: 3px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(255, 107, 107, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.3s;
+            border-radius: 3px;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #ff8e8e);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #6BFFE8);
+            color: white;
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #FFE066);
+            color: var(--dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #4DFFC7);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning), #FFB84D);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            border-radius: 0 0 60px 60px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background-color: white;
+            padding: 40px 0;
+            margin: 40px 0;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 5px solid var(--accent);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+            font-family: 'Fredoka One', cursive;
+            font-size: 36px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 25px;
+            border-radius: 20px;
+            background-color: var(--light);
+            transition: transform 0.3s;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            border: 5px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .member-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-size: 20px;
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        /* Levels Section */
+        .levels-section {
+            margin-bottom: 60px;
+        }
+        
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .level-card {
+            background-color: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            border: 5px solid transparent;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .level-1 {
+            border-color: var(--secondary);
+        }
+        
+        .level-2 {
+            border-color: var(--primary);
+        }
+        
+        .level-3 {
+            border-color: var(--premium);
+        }
+        
+        .level-header {
+            padding: 25px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .level-1 .level-header {
+            background: linear-gradient(135deg, var(--secondary), #6BFFE8);
+        }
+        
+        .level-2 .level-header {
+            background: linear-gradient(135deg, var(--primary), #ff8e8e);
+        }
+        
+        .level-3 .level-header {
+            background: linear-gradient(135deg, var(--premium), #9D4EDD);
+        }
+        
+        .level-content {
+            padding: 25px;
+        }
+        
+        .level-content h4 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 22px;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .level-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        
+        .level-features {
+            list-style-type: none;
+            margin-bottom: 25px;
+        }
+        
+        .level-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+        
+        .feature-icon {
+            color: var(--accent);
+            font-size: 20px;
+        }
+        
+        .premium-badge {
+            background-color: var(--premium);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        
+        .free-badge {
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Activities Section */
+        .activities-section {
+            background: linear-gradient(135deg, var(--light), #E8F4F3);
+            padding: 60px 0;
+            border-radius: 40px;
+            margin: 60px 0;
+            border: 5px solid var(--accent);
+        }
+        
+        .activities-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab-btn {
+            padding: 15px 30px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            font-size: 16px;
+            border: 3px solid transparent;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 3px solid var(--secondary);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .activity-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 3px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .activity-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+        
+        .activity-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 20px;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .activity-desc {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        /* Game Container */
+        .game-container {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            border: 5px solid var(--accent);
+        }
+        
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .game-content {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .word-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--dark);
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            border: 5px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .audio-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option-btn {
+            padding: 20px;
+            background: white;
+            border: 3px solid var(--gray);
+            border-radius: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: rgba(255, 107, 107, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .option-btn.correct {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+        
+        .option-btn.incorrect {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 15px;
+            background-color: var(--gray);
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+            border: 2px solid var(--dark);
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.5s;
+            border-radius: 8px;
+        }
+        
+        /* Pronunciation Game */
+        .pronunciation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .pronunciation-image {
+            width: 200px;
+            height: 200px;
+            background-color: var(--light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            margin-bottom: 20px;
+            border: 5px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pronunciation-controls {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .custom-word-input {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .custom-word-input input {
+            padding: 15px;
+            border: 3px solid var(--gray);
+            border-radius: 15px;
+            font-size: 18px;
+            width: 250px;
+            transition: all 0.3s;
+        }
+        
+        .custom-word-input input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+        }
+        
+        /* Rewards Section */
+        .rewards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .reward-badge {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent), #FFB347);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+            border: 5px solid white;
+        }
+        
+        .reward-badge.locked {
+            background: var(--gray);
+            color: #999;
+        }
+        
+        .reward-badge .reward-text {
+            position: absolute;
+            bottom: -30px;
+            font-size: 14px;
+            color: var(--dark);
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        
+        /* Modals (Common Style) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalAppear 0.3s ease-out;
+            margin: 20px 0;
+            border: 5px solid var(--accent);
+        }
+
+        /* Specific style for Policies/About us modals (larger) */
+        .info-modal-content {
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: left;
+        }
+        
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.8) translateY(-20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .modal-title {
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--primary);
+            font-size: 32px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--gray);
+        }
+
+        .modal-section h3 {
+            color: var(--secondary);
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .modal-section p, .modal-section ul {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+            margin-left: 14px;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .modal-section ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .modal-section ul li:before {
+            content: "★";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Login Form styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 16px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 3px solid var(--gray);
+            border-radius: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+        }
+        
+        .age-verification {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 3px dashed var(--secondary);
+        }
+        
+        .age-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .age-option {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            border: 3px solid var(--gray);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .age-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(255, 107, 107, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 80px;
+            border-top: 10px solid var(--accent);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: var(--accent);
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+            font-size: 16px;
+        }
+        
+        /* Certificate Styles */
+        .certificate {
+            background: white;
+            border: 15px solid #f0e6d2;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            border-radius: 20px;
+        }
+        
+        .certificate-header {
+            margin-bottom: 30px;
+        }
+        
+        .certificate-title {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .certificate-subtitle {
+            font-size: 22px;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+        
+        .certificate-body {
+            margin-bottom: 40px;
+        }
+        
+        .certificate-student {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .certificate-text {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .certificate-score {
+            font-size: 28px;
+            color: var(--success);
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        
+        .certificate-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .certificate-signature {
+            text-align: center;
+            width: 45%;
+        }
+        
+        .signature-line {
+            border-top: 2px solid var(--dark);
+            width: 80%;
+            margin: 0 auto 10px;
+        }
+        
+        /* Exam Section */
+        .exam-section {
+            background: linear-gradient(135deg, var(--light), #E8F4F3);
+            padding: 60px 0;
+            border-radius: 40px;
+            margin: 60px 0;
+            border: 5px solid var(--warning);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .age-options {
+                flex-direction: column;
+            }
+            
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .pronunciation-image {
+                width: 150px;
+                height: 150px;
+                font-size: 70px;
+            }
+            
+            .custom-word-input {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .certificate-footer {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .certificate-signature {
+                width: 100%;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        <!-- Para usar un logo real, reemplaza el SVG con esta línea: -->
+                        <img src="C:\Users\sarai\chatter\logo.jpg" alt="Logo de Chatter Kid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        <!--
+                        <svg width="60" height="60" viewBox="0 0 20 20" fill="none">
+                            <circle cx="20" cy="20" r="18" fill="url(#gradient)"/>
+                            <path 
+                            d="M12 15C12 15 15 12 20 12C25 12 28 15 28 15M12 25C12 25 15 28 20 28C25 28 28 25 28 25M15 20H25" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#e66bff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#4A6FFF;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        -->
+                    </div>
+                    <div class="logo-text">
+                        <h1>Chatter Kid</h1>
+                        <p>¡Aprende Inglés con Chatter Kid!</p>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="nav-link active">Inicio</a>
+                    <a href="#" class="nav-link" id="levelsLink">Niveles</a>
+                    <a href="#" class="nav-link" id="activitiesLink">Actividades</a>
+                    <a href="#" class="nav-link" id="examLink">Examen</a>
+                    <a href="#" class="nav-link">Recursos</a>
+                    <a href="#" class="nav-link">Premium</a>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </button>
+                    <button class="btn btn-primary" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>¡Aprende Inglés con Chatter Kid!</h2>
+                <p>La aplicación interactiva diseñada especialmente para niños. Con juegos, canciones y actividades divertidas, aprender inglés nunca había sido tan emocionante.</p>
+                <button class="btn btn-accent" id="startLearningBtn">
+                    <i class="fas fa-play-circle"></i> Comenzar a Aprender
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="levels-section" id="levelsSection">
+        <div class="container">
+            <h2 class="section-title">Niveles de Aprendizaje</h2>
+            <div class="levels-grid">
+                <div class="level-card level-1">
+                    <div class="level-header">
+                        <h3>Principiante</h3>
+                        <span class="free-badge">GRATIS</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>Vocabulario y Frases Básicas</h4>
+                        <p>Perfecto para empezar con el abecedario, números, colores y saludos.</p>
+                        <ul class="level-features">
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> 8 juegos de vocabulario</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Lecciones de pronunciación</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Canciones interactivas</li>
+                        </ul>
+                        <button class="btn btn-secondary start-level" data-level="1" style="width: 100%;">
+                            <i class="fas fa-play"></i> Empezar Nivel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="level-card level-2">
+                    <div class="level-header">
+                        <h3>Intermedio</h3>
+                        <span class="free-badge">GRATIS</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>Formación de Oraciones y Gramática</h4>
+                        <p>Construye frases, aprende preposiciones y verbos de rutina diaria.</p>
+                        <ul class="level-features">
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Presente Simple</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Mini historias de lectura</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> 8 juegos diferentes</li>
+                        </ul>
+                        <button class="btn btn-primary start-level" data-level="2" style="width: 100%;">
+                            <i class="fas fa-play"></i> Continuar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="level-card level-3">
+                    <div class="level-header">
+                        <h3>Avanzado</h3>
+                        <span class="premium-badge"><i class="fas fa-crown"></i> PREMIUM</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>Gramática y Conversación Fluida</h4>
+                        <p>Para niños que buscan hablar con confianza y quieren dominar el inglés.</p>
+                        <ul class="level-features">
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Tiempos verbales</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Lectura de cuentos</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> Comprensión auditiva</li>
+                            <li><span class="feature-icon"><i class="fas fa-check-circle"></i></span> 12 juegos diferentes</li>
+                        </ul>
+                        <button class="btn btn-outline start-level" data-level="3" style="width: 100%;">
+                            <i class="fas fa-crown"></i> Obtener Premium
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="premium-section" style="display: none; padding: 20px; text-align: center; background-color: var(--premium); color: var(--light); border-radius: 10px; margin-top: 20px;">
+        <div class="container">
+            <h2>🌟 Avanzado PREMIUM 🌟</h2>
+            <p class="subtitle">Gramática y Conversación Fluida</p>
+            <p>Para niños que buscan hablar con confianza y quieren dominar el inglés.</p>
+            <div style="text-align: left; margin: 20px auto; max-width: 400px;">
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 8px;">✅ Tiempos verbales avanzados</li>
+                    <li style="margin-bottom: 8px;">✅ Lectura de cuentos y análisis</li>
+                    <li style="margin-bottom: 8px;">✅ Comprensión auditiva profunda</li>
+                    <li style="margin-bottom: 8px;">✅ 12 juegos diferentes (incluyendo Pares Mínimos y Trabalenguas)</li>
+                </ul>
+            </div>
+            <button id="getPremiumBtn" class="btn btn-success" style="border: none; padding: 10px 30px; cursor: pointer; font-weight: bold; font-size: 1.1em;">
+                Obtener Premium
+            </button>
+        </div>
+    </section>
+
+    <section class="activities-section" id="activitiesSection">
+        <div class="container">
+            <h2 class="section-title">Actividades Interactivas</h2>
+            <div class="activities-tabs">
+                <button class="tab-btn active" data-tab="tab1">Nivel 1</button>
+                <button class="tab-btn" data-tab="tab2">Nivel 2</button>
+                <button class="tab-btn" data-tab="tab3">Nivel 3</button>
+                <button class="tab-btn" data-tab="tab4">Pronunciación</button>
+            </div>
+
+            <div class="tab-content active" id="tab1">
+                <h3 style="text-align: center; margin-bottom: 20px;">Actividades para Principiantes</h3>
+                <div class="activity-grid">
+                    <div class="activity-card" data-activity="abc-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-font"></i> </div>
+                        <h4 class="activity-title">Abecedario Inglés</h4>
+                        <p class="activity-desc">Aprende el ABC con divertidas imágenes y sonidos</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="colors-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-palette"></i> </div>
+                        <h4 class="activity-title">Colores Básicos</h4>
+                        <p class="activity-desc">Asocia colores con objetos comunes</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="numbers-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-sort-numeric-up-alt"></i> </div>
+                        <h4 class="activity-title">Números del 1 al 10</h4>
+                        <p class="activity-desc">Contar y reconocer números en inglés</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="pets-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-paw"></i> </div>
+                        <h4 class="activity-title">Animales Domésticos</h4>
+                        <p class="activity-desc">Vocabulario de animales que puedes tener en casa</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="greetings-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-handshake"></i> </div>
+                        <h4 class="activity-title">Saludos y Despedidas</h4>
+                        <p class="activity-desc">Frases esenciales para empezar a conversar</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="family-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-users"></i> </div>
+                        <h4 class="activity-title">Mi Familia</h4>
+                        <p class="activity-desc">Aprende sobre mamá, papá, hermanos, etc.</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="food-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-hamburger"></i> </div>
+                        <h4 class="activity-title">Comida Básica</h4>
+                        <p class="activity-desc">Nombra tus frutas y comidas favoritas</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="toys-game" data-level="1">
+                        <div class="activity-icon"> <i class="fas fa-gamepad"></i> </div>
+                        <h4 class="activity-title">Mis Juguetes</h4>
+                        <p class="activity-desc">Vocabulario de objetos de juego</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab2">
+                <h3 style="text-align: center; margin-bottom: 20px;">Actividades para Intermedios</h3>
+                <div class="activity-grid">
+                    <div class="activity-card" data-activity="adjectives-game" data-level="2">
+                        <div class="activity-icon"> <i class="fas fa-pencil-ruler"></i> </div>
+                        <h4 class="activity-title">Adjetivos Descriptivos</h4>
+                        <p class="activity-desc">Aprende a describir cosas y personas</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="prepositions-game" data-level="2">
+                        <div class="activity-icon"> <i class="fas fa-map-pin"></i> </div>
+                        <h4 class="activity-title">Preposiciones de Lugar</h4>
+                        <p class="activity-desc">Usa "in, on, under" y más correctamente</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="tenses-basic-game" data-level="2">
+                        <div class="activity-icon"> <i class="fas fa-clock"></i> </div>
+                        <h4 class="activity-title">Presente Simple</h4>
+                        <p class="activity-desc">Conjuga verbos en presente simple</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="question-game" data-level="2">
+                        <div class="activity-icon"> <i class="fas fa-question-circle"></i> </div>
+                        <h4 class="activity-title">Hacer Preguntas</h4>
+                        <p class="activity-desc">Usa "What, Where, Why, When, How"</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="daily-routine" data-level="2">
+                        <div class="activity-icon"> <i class="fas fa-redo"></i> </div>
+                        <h4 class="activity-title">Rutina Diaria</h4>
+                        <p class="activity-desc">Vocabulario para hablar de tu día</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="story-simple" data-level="2">
+                        <div class="activity-icon"> <i class="fas fa-book-reader"></i> </div>
+                        <h4 class="activity-title">Mini Historias</h4>
+                        <p class="activity-desc">Primeros pasos en la comprensión lectora</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab3">
+                <h3 style="text-align: center; margin-bottom: 20px;">Actividades para Avanzados (Premium)</h3>
+                <div class="activity-grid">
+                    <div class="activity-card" data-activity="grammar-game" data-level="3">
+                        <div class="activity-icon"> <i class="fas fa-spell-check"></i> </div>
+                        <h4 class="activity-title">Tiempos Verbales</h4>
+                        <p class="activity-desc">Pasado y futuro, voz pasiva</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="stories-game" data-level="3">
+                        <div class="activity-icon"> <i class="fas fa-book"></i> </div>
+                        <h4 class="activity-title">Cuentos Cortos</h4>
+                        <p class="activity-desc">Comprensión lectora avanzada</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="conversation-game" data-level="3">
+                        <div class="activity-icon"> <i class="fas fa-comments"></i> </div>
+                        <h4 class="activity-title">Diálogos Completos</h4>
+                        <p class="activity-desc">Practica conversaciones largas</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="vocabulary-advanced" data-level="3">
+                        <div class="activity-icon"> <i class="fas fa-lightbulb"></i> </div>
+                        <h4 class="activity-title">Vocabulario Avanzado</h4>
+                        <p class="activity-desc">Sinónimos, antónimos y frases complejas</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+
+                    <div class="activity-card" data-activity="trabalenguas" data-level="3">
+                        <div class="activity-icon"> <i class="fas fa-volume-up"></i> </div>
+                        <h4 class="activity-title">Trabalenguas</h4>
+                        <p class="activity-desc">Practica la fluidez con frases difíciles</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    <div class="activity-card" data-activity="pares-minimos" data-level="3">
+                        <div class="activity-icon"> <i class="fas fa-headphones-alt"></i> </div>
+                        <h4 class="activity-title">Pares Mínimos</h4>
+                        <p class="activity-desc">Diferencia sonidos sutiles (ej: 'ship' vs 'sheep').</p>
+                        <button class="btn btn-primary play-activity">Jugar</button>
+                    </div>
+                    </div>
+            </div>
+
+            <div class="tab-content" id="tab4">
+                <h3 style="text-align: center; margin-bottom: 20px;">Práctica de Pronunciación</h3>
+                <div class="activity-grid">
+                    <div class="activity-card" data-activity="pronunciation-guided" data-level="all">
+                        <div class="activity-icon"> <i class="fas fa-microphone-alt"></i> </div>
+                        <h4 class="activity-title">Guía de Palabras</h4>
+                        <p class="activity-desc">Escucha la pronunciación correcta y repite.</p>
+                        <button class="btn btn-primary play-activity">Practicar</button>
+                    </div>
+                    <div class="activity-card" data-activity="pronunciation-custom" data-level="all">
+                        <div class="activity-icon"> <i class="fas fa-edit"></i> </div>
+                        <h4 class="activity-title">Palabra Personalizada</h4>
+                        <p class="activity-desc">Escribe cualquier palabra para practicar.</p>
+                        <button class="btn btn-primary play-activity">Escribir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Examen -->
+    <section class="exam-section" id="examSection">
+        <div class="container">
+            <h2 class="section-title">Examen Final</h2>
+            <div class="activity-grid">
+                <div class="activity-card" data-activity="final-exam" data-level="all">
+                    <div class="activity-icon"> <i class="fas fa-graduation-cap"></i> </div>
+                    <h4 class="activity-title">Examen de Certificación</h4>
+                    <p class="activity-desc">Demuestra lo que has aprendido y obtén tu certificado.</p>
+                    <button class="btn btn-warning" id="startExamBtn">
+                        <i class="fas fa-play"></i> Iniciar Examen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="game-container" id="gameContainer" style="display: none;">
+        <div class="game-header">
+            <h3 id="gameTitle">Título del Juego</h3>
+            <button class="btn btn-outline" id="closeGame">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="gameProgress"></div>
+        </div>
+        <div class="game-content">
+            <p id="gameInstruction" style="font-size: 18px; color: var(--secondary); font-weight: 600; margin-bottom: 15px;">Instrucción del Juego</p>
+            <div class="word-card" id="wordCard">
+                <span id="wordText">WORD</span>
+                <button class="audio-btn" id="audioBtn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+            <div class="options-container" id="optionsContainer">
+                <button class="option-btn">Option 1</button>
+                <button class="option-btn">Option 2</button>
+                <button class="option-btn">Option 3</button>
+                <button class="option-btn">Option 4</button>
+            </div>
+            <div class="game-stats">
+                <span>Puntuación: <span id="score">0</span></span>
+                <span>Vidas: <span id="lives">3</span> <i class="fas fa-heart" style="color: var(--primary);"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-container" id="pronunciationContainer" style="display: none;">
+        <div class="game-header">
+            <h3>Pronunciación Guiada</h3>
+            <button class="btn btn-outline" id="closePronunciation">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="pronunciationProgress"></div>
+        </div>
+        <div class="game-content">
+            <div class="pronunciation-container">
+                <div class="pronunciation-image" id="pronunciationImage">
+                    <i class="fas fa-image"></i>
+                </div>
+                <h3 id="pronunciationWord">Palabra</h3>
+                <p>Escucha y repite la palabra:</p>
+                <div class="pronunciation-controls">
+                    <button class="audio-btn" id="pronunciationAudioBtn" style="background-color: var(--secondary);">
+                        <i class="fas fa-volume-up"></i> Escuchar
+                    </button>
+                    <button class="btn btn-primary" id="recordBtn">
+                        <i class="fas fa-microphone"></i> Grabar
+                    </button>
+                </div>
+                <div id="resultFeedback" style="font-weight: bold; margin-top: 10px;"></div>
+                <button class="btn btn-success" id="nextWordBtn">
+                    <i class="fas fa-chevron-right"></i> Siguiente Palabra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-container" id="customPronunciationContainer" style="display: none;">
+        <div class="game-header">
+            <h3>Palabra Personalizada</h3>
+            <button class="btn btn-outline" id="closeCustomPronunciation">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+        </div>
+        <div class="game-content">
+            <div class="pronunciation-container">
+                <div class="custom-word-input">
+                    <input type="text" id="customWordInput" placeholder="Escribe tu palabra en inglés...">
+                    <button class="btn btn-primary" id="speakCustomWordBtn">
+                        <i class="fas fa-volume-up"></i> Probar
+                    </button>
+                </div>
+                <div class="word-card" id="customWordCard" style="display: none; background-color: var(--warning); color: white;">
+                    <span id="customWordText">WORD</span>
+                    <button class="audio-btn" id="customAudioBtn" style="background-color: white; color: var(--warning);">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de Examen -->
+    <div class="game-container" id="examContainer" style="display: none;">
+        <div class="game-header">
+            <h3>Examen Final - Chatter Kid</h3>
+            <button class="btn btn-outline" id="closeExam">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="examProgress"></div>
+        </div>
+        <div class="game-content">
+            <p id="examInstruction" style="font-size: 18px; color: var(--secondary); font-weight: 600; margin-bottom: 15px;">Responde correctamente a las preguntas para obtener tu certificado</p>
+            <div class="word-card" id="examWordCard">
+                <span id="examQuestionText">Pregunta</span>
+            </div>
+            <div class="options-container" id="examOptionsContainer">
+                <button class="option-btn">Option 1</button>
+                <button class="option-btn">Option 2</button>
+                <button class="option-btn">Option 3</button>
+                <button class="option-btn">Option 4</button>
+            </div>
+            <div class="game-stats">
+                <span>Pregunta: <span id="currentQuestion">1</span>/<span id="totalQuestions">10</span></span>
+                <span>Puntuación: <span id="examScore">0</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="levelCompleteModal">
+        <div class="modal-content">
+            <h2 class="modal-title" id="levelCompleteTitle">¡Nivel Completado!</h2>
+            <p id="levelCompleteMessage" style="text-align: center; margin-bottom: 25px;">¡Felicidades! Has terminado la actividad con un excelente puntaje.</p>
+            <p id="levelCompleteStats" style="text-align: center; font-weight: bold; margin-bottom: 30px;"></p>
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <button class="btn btn-warning" id="playAgainBtn">
+                    <i class="fas fa-redo"></i> Jugar de Nuevo
+                </button>
+                <button class="btn btn-success" id="nextLevelBtn">
+                    <i class="fas fa-chevron-right"></i> Siguiente Nivel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title">Iniciar Sesión / Registrarse</h2>
+            <form id="loginForm">
+                <div class="age-verification">
+                    <p style="font-weight: bold; margin-bottom: 10px;">¿Quién eres?</p>
+                    <div class="age-options">
+                        <div class="age-option" id="minorOption">
+                            <i class="fas fa-child"></i> Soy un niño/a (menor)
+                        </div>
+                        <div class="age-option" id="adultOption">
+                            <i class="fas fa-user-tie"></i> Soy un adulto
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group" id="parentEmailGroup" style="display: none;">
+                    <label for="parentEmail">Correo Electrónico del Tutor:</label>
+                    <input type="email" id="parentEmail" name="parentEmail" class="form-control" 
+                    placeholder="Necesario para cuentas de menores">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;
+                margin-top: 10px;">
+                    <i class="fas fa-sign-in-alt"></i> Entrar / Crear Cuenta
+                </button>
+                <p style="text-align: center; margin-top: 15px; font-size: 14px;
+                color: #666;"> 
+                    ¿Tienes problemas? 
+                    <a href="mailto:is.chatterkid@gmail.com?subject=Problema%20con%20el%20inicio%20de%20sesión%20en%20Chatter%20Kid" 
+                        target="_blank" style="color: var(--secondary); text-decoration: none;">
+                        Contacta Soporte
+                    </a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="premiumModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closePremiumModal">&times;</span>
+            <h2 class="modal-title">✨ Obtén Acceso Ilimitado ✨</h2>
+            <p style="text-align: center; margin-bottom: 25px;">Selecciona tu plan de suscripción Premium:</p>
+            
+            <div style="margin: 15px 0; padding: 15px; border: 2px solid var(--accent); border-radius: 8px; text-align: center;">
+                <h4 style="margin-bottom: 10px; color: var(--primary);">Plan Mensual</h4>
+                <p style="font-size: 1.2em; font-weight: bold; color: var(--premium); margin-bottom: 10px;">$X.XX USD/mes</p>
+                <button class="btn btn-success buy-btn">Comprar Plan Mensual</button>
+            </div>
+            
+            <div style="margin: 15px 0; padding: 15px; border: 2px solid var(--accent); border-radius: 8px; text-align: center; background-color: #ffe0f0;">
+                <h4 style="margin-bottom: 10px; color: var(--primary);">Plan Anual (MEJOR OFERTA)</h4>
+                <p style="font-size: 1.2em; font-weight: bold; color: var(--premium); margin-bottom: 10px;">$Y.YY USD/año</p>
+                <p style="font-size: 0.9em; color: var(--dark); margin-bottom: 10px;">Ahorra un 20%</p>
+                <button class="btn btn-primary buy-btn">Comprar Plan Anual</button>
+            </div>
+            
+            <p style="font-size: 0.8em; text-align: center; margin-top: 15px; color: #666;">*Serás redirigido a una pasarela de pago segura.</p>
+        </div>
+    </div>
+
+    <!-- Modal de Certificado -->
+    <div class="modal" id="certificateModal">
+        <div class="modal-content" style="max-width: 900px;">
+            <span class="close-modal" id="closeCertificateModal">&times;</span>
+            <div class="certificate" id="certificateContent">
+                <div class="certificate-header">
+                    <h1 class="certificate-title">Certificado de Logro</h1>
+                    <p class="certificate-subtitle">Chatter Kid - Inglés para Niños</p>
+                </div>
+                <div class="certificate-body">
+                    <p class="certificate-text">Se otorga el presente certificado a:</p>
+                    <h2 class="certificate-student" id="certificateStudentName">Nombre del Estudiante</h2>
+                    <p class="certificate-text">Por haber completado exitosamente el examen final de Chatter Kid y demostrar un excelente dominio del inglés básico.</p>
+                    <p class="certificate-score" id="certificateScore">Puntuación: 90/100</p>
+                    <p class="certificate-text">Fecha de emisión: <span id="certificateDate">01 de Enero, 2025</span></p>
+                </div>
+                <div class="certificate-footer">
+                    <div class="certificate-signature">
+                        <div class="signature-line"></div>
+                        <p>Profesor de Chatter Kid</p>
+                    </div>
+                    <div class="certificate-signature">
+                        <div class="signature-line"></div>
+                        <p>Directora Académica</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" id="printCertificateBtn">
+                    <i class="fas fa-print"></i> Imprimir Certificado
+                </button>
+                <button class="btn btn-success" id="shareCertificateBtn">
+                    <i class="fas fa-share-alt"></i> Compartir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="aboutUsModal">
+        <div class="modal-content info-modal-content">
+            <span class="close-modal" id="closeAboutModal">&times;</span>
+            <h2 class="modal-title">Acerca de Chatter Kid</h2>
+            <div class="modal-section">
+                <h3>Nuestra Misión</h3>
+                <p>Chatter Kid nació de la pasión por la educación y la convicción de que aprender un segundo idioma debe ser una experiencia divertida y accesible para los niños de hoy.</p>
+                <p>Nuestra misión es utilizar la tecnología para crear un ambiente de aprendizaje seguro, atractivo y efectivo, donde los niños puedan construir confianza en el idioma inglés desde una edad temprana.</p>
+            </div>
+            <div class="modal-section">
+                <h3>El Equipo</h3>
+                <p>Somos un equipo multidisciplinario de pedagogos, desarrolladores de software y diseñadores gráficos dedicados a la educación infantil. Cada actividad y juego está diseñado con base en principios de adquisición de idiomas para niños (CALL - Computer-Assisted Language Learning).</p>
+                <p>¡Gracias por ser parte de la comunidad Chatter Kid!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="policiesModal">
+        <div class="modal-content info-modal-content">
+            <span class="close-modal" id="closePoliciesModal">&times;</span>
+            <h2 class="modal-title">Políticas y Condiciones de Uso</h2>
+            <div class="modal-section">
+                <h3>1. Aceptación de Términos</h3>
+                <p>Al acceder y utilizar la aplicación Chatter Kid, usted y su hijo/a aceptan estar sujetos a los siguientes términos y condiciones de uso.</p>
+            </div>
+            <div class="modal-section">
+                <h3>2. Contenido y Seguridad para Niños</h3>
+                <ul>
+                    <li>El contenido de la aplicación está categorizado por edades y diseñado para ser educativo y seguro para menores de 13 años (cumpliendo con directrices como COPPA).</li>
+                    <li>La aplicación no contiene publicidad invasiva ni materiales que afecten la integridad de los niños.</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <h3>3. Políticas de Privacidad y Seguridad</h3>
+                <ul>
+                    <li>Los datos personales de los usuarios (niños y padres/tutores) estarán protegidos conforme a las leyes de protección de datos.</li>
+                    <li>La aplicación no compartirá información personal con terceros sin autorización expresa.</li>
+                    <li>Se implementarán medidas tecnológicas (encriptación, contraseñas seguras, control parental) para proteger la seguridad de la información.</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <h3>4. Políticas de Acceso y Disponibilidad</h3>
+                <ul>
+                    <li>El servicio estará disponible las 24 horas del día, salvo mantenimientos programados que serán notificados previamente.</li>
+                    <li>Se ofrecerá compatibilidad multiplataforma (navegador web, dispositivos móviles).</li>
+                    <li>El acceso completo a los recursos avanzados podrá requerir suscripción o pago, pero siempre habrá contenido básico gratuito.</li>
+                </ul>
+            </div>
+            <div class="modal-section" style="border-bottom: none;">
+                <h3>5. Políticas de Calidad y Mejora Continua</h3>
+                <ul>
+                    <li>Se revisará periódicamente la experiencia de los usuarios (padres y niños) mediante encuestas y retroalimentación.</li>
+                    <li>La empresa se compromete a la mejora continua, incorporando nuevas tecnologías (reconocimiento de voz, realidad aumentada, etc.).</li>
+                    <li>Se establecerán alianzas con instituciones educativas para garantizar la calidad pedagógica de la plataforma.</li>
+                </ul>
+                <p style="margin-top: 15px; font-style: italic;">Nota Importante:ChatterKid no sustituye la enseñanza formal, sino que complementa la educación de los niños. Los padres y tutores son responsables de supervisar el uso de la aplicación y fomentar un uso responsable de la tecnología.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Chatter Kid</h3>
+                    <p style="color: #ccc; font-size: 14px;">La forma más divertida de aprender inglés.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#" id="footerLevelsLink">Niveles</a></li>
+                        <li><a href="#" id="footerActivitiesLink">Juegos</a></li>
+                        <li><a href="#" id="footerExamLink">Examen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Información</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="open-info-modal" data-modal-id="aboutUsModal">Acerca de Nosotros</a></li>
+                        <li><a href="#" class="open-info-modal" data-modal-id="policiesModal">Términos y Políticas</a></li>
+                        <li><a href="mailto:is.chatterkid@gmail.com">Soporte Técnico</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Chatter Kid. Desarrollado por: Hosanna Sarai Aguilar Mamrolejo.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data structure for games (Example data)
+        const level1Data = {
+            'abc-game': [ 
+                { word: "A", options: ["🅰️", "🅱️", "©️", "🇩"], correct: 0, type: "letter", audio: "a", image: "🅰️" },
+                { word: "B", options: ["🅰️", "🅱️", "©️", "🇩"], correct: 1, type: "letter", audio: "b", image: "🅰️" },
+                { word: "C", options: ["🅰️", "🅱️", "©️", "🇩"], correct: 2, type: "letter", audio: "c", image: "©️" },
+                { word: "D", options: ["🅰️", "🅱️", "©️", "🇩"], correct: 3, type: "letter", audio: "d", image: "🇩" },
+                { word: "E", options: ["📧", "🇫", "🇬", "🇭"], correct: 0, type: "letter", audio: "e", image: "📧" },
+                { word: "F", options: ["📧", "🇫", "🇬", "🇭"], correct: 1, type: "letter", audio: "f", image: "🇫" },
+                { word: "G", options: ["📧", "🇫", "🇬", "🇭"], correct: 2, type: "letter", audio: "g", image: "🇬" },
+                { word: "H", options: ["📧", "🇫", "🇬", "🇭"], correct: 3, type: "letter", audio: "h", image: "🇭" }
+            ],
+            'colors-game': [
+                { word: "Red", options: ["🔴", "🔵", "🟢", "🟡"], correct: 0, type: "color", audio: "red", image: "🔴" },
+                { word: "Blue", options: ["🔴", "🔵", "🟢", "🟡"], correct: 1, type: "color", audio: "blue", image: "🔵" },
+                { word: "Green", options: ["🔴", "🔵", "🟢", "🟡"], correct: 2, type: "color", audio: "green", image: "🟢" },
+                { word: "Yellow", options: ["🔴", "🔵", "🟢", "🟡"], correct: 3, type: "color", audio: "yellow", image: "🟡" }
+            ],
+            'numbers-game': [
+                { word: "Five", options: ["5️⃣", "6️⃣", "7️⃣", "8️⃣"], correct: 0, type: "number", audio: "five", image: "5️⃣" },
+                { word: "Six", options: ["5️⃣", "6️⃣", "7️⃣", "8️⃣"], correct: 1, type: "number", audio: "six", image: "6️⃣" },
+                { word: "Seven", options: ["5️⃣", "6️⃣", "7️⃣", "8️⃣"], correct: 2, type: "number", audio: "seven", image: "7️⃣" },
+                { word: "Eight", options: ["5️⃣", "6️⃣", "7️⃣", "8️⃣"], correct: 3, type: "number", audio: "eight", image: "8️⃣" }
+            ],
+            'pets-game': [
+                { word: "Dog", options: ["🐶", "🐱", "🐰", "🦜"], correct: 0, type: "pet", audio: "dog", image: "🐶" },
+                { word: "Cat", options: ["🐶", "🐱", "🐰", "🦜"], correct: 1, type: "pet", audio: "cat", image: "🐱" },
+                { word: "Rabbit", options: ["🐶", "🐱", "🐰", "🦜"], correct: 2, type: "pet", audio: "rabbit", image: "🐰" },
+                { word: "Bird", options: ["🐶", "🐱", "🐰", "🦜"], correct: 3, type: "pet", audio: "bird", image: "🦜" },
+                { word: "Fish", options: ["🐠", "🐹", "🐢", "🐍"], correct: 0, type: "pet", audio: "fish", image: "🐠" },
+                { word: "Hamster", options: ["🐠", "🐹", "🐢", "🐍"], correct: 1, type: "pet", audio: "hamster", image: "🐹" }
+            ],
+            'greetings-game': [
+                { word: "Hello", options: ["Hi", "Bye", "Good night", "See you later"], correct: 0, type: "phrase", audio: "hello", image: "👋" },
+                { word: "Good morning", options: ["Good morning", "Good afternoon", "Good evening", "Good night"], correct: 0, type: "phrase", audio: "good morning", image: "☀️" },
+                { word: "See you tomorrow", options: ["See you tomorrow", "See you later", "Nice to meet you", "Have a good day"], correct: 0, type: "phrase", audio: "see you tomorrow", image: "📅" }
+            ],
+            'family-game': [
+                { word: "Mother", options: ["👩", "👨", "👧", "👦"], correct: 0, type: "family", audio: "mother", image: "👩" },
+                { word: "Father", options: ["👩", "👨", "👧", "👦"], correct: 1, type: "family", audio: "father", image: "👨" },
+                { word: "Sister", options: ["👩", "👨", "👧", "👦"], correct: 2, type: "family", audio: "sister", image: "👧" },
+                { word: "Brother", options: ["👩", "👨", "👧", "👦"], correct: 3, type: "family", audio: "brother", image: "👦" },
+                { word: "Grandmother", options: ["👵", "👴", "👶", "👯"], correct: 0, type: "family", audio: "grandmother", image: "👵" },
+                { word: "Grandfather", options: ["👵", "👴", "👶", "👯"], correct: 1, type: "family", audio: "grandfather", image: "👴" }
+            ],
+            'food-game': [
+                { word: "Apple", options: ["🍎", "🍌", "🍇", "🍊"], correct: 0, type: "food", audio: "apple", image: "🍎" },
+                { word: "Banana", options: ["🍎", "🍌", "🍇", "🍊"], correct: 1, type: "food", audio: "banana", image: "🍌" },
+                { word: "Grapes", options: ["🍎", "🍌", "🍇", "🍊"], correct: 2, type: "food", audio: "grapes", image: "🍇" }
+            ],
+            'toys-game': [
+                { word: "Ball", options: ["⚽", "🧸", "🪁", "🧩"], correct: 0, type: "toy", audio: "ball", image: "⚽" },
+                { word: "Bear", options: ["⚽", "🧸", "🪁", "🧩"], correct: 1, type: "toy", audio: "bear", image: "🧸" },
+                { word: "Kite", options: ["⚽", "🧸", "🪁", "🧩"], correct: 2, type: "toy", audio: "kite", image: "🪁" }
+            ],
+        };
+
+        const level2Data = {
+            'adjectives-game': [
+                { word: "Big", options: ["Grande", "Pequeño", "Rápido", "Lento"], correct: 0, type: "vocabulary", audio: "big", image: "🐘" },
+                { word: "Small", options: ["Grande", "Pequeño", "Rápido", "Lento"], correct: 1, type: "vocabulary", audio: "small", image: "🐜" },
+                { word: "Happy", options: ["😊", "😢", "😠", "😴"], correct: 0, type: "vocabulary", audio: "happy", image: "😊" },
+                { word: "Sad", options: ["😊", "😢", "😠", "😴"], correct: 1, type: "vocabulary", audio: "sad", image: "😢" },
+                { word: "Fast", options: ["🚗", "🐌", "🏃", "🚶"], correct: 0, type: "vocabulary", audio: "fast", image: "🚗" },
+                { word: "Slow", options: ["🚗", "🐌", "🏃", "🚶"], correct: 1, type: "vocabulary", audio: "slow", image: "🐌" }
+            ],
+            'prepositions-game': [
+                { word: "The ball is **in** the box", options: ["In", "On", "Under", "Next to"], correct: 0, type: "grammar", audio: "the ball is in the box", image: "📦" },
+                { word: "The cat is **on** the table", options: ["In", "On", "Under", "Next to"], correct: 1, type: "grammar", audio: "the cat is on the table", image: "🐈" },
+                { word: "The dog is **under** the bed", options: ["In", "On", "Under", "Next to"], correct: 2, type: "grammar", audio: "the dog is under the bed", image: "🐕" }
+            ],
+            'tenses-basic-game': [
+                { word: "She **plays** soccer.", options: ["play", "plays", "playing", "played"], correct: 1, type: "grammar", audio: "she plays soccer", image: "⚽" },
+                { word: "We **read** books.", options: ["read", "reads", "reading", "readed"], correct: 0, type: "grammar", audio: "we read books", image: "📚" }
+            ],
+            'question-game': [
+                { word: "**What** is your name?", options: ["What", "Where", "Why", "When"], correct: 0, type: "grammar", audio: "what is your name", image: "❓" },
+                { word: "**Where** are you going?", options: ["What", "Where", "Why", "When"], correct: 1, type: "grammar", audio: "where are you going", image: "📍" }
+            ],
+            'daily-routine': [
+                { word: "I **wake up** at seven", options: ["wake up", "go to sleep", "eat breakfast", "brush teeth"], correct: 0, type: "phrase", audio: "i wake up at seven", image: "⏰" },
+                { word: "I **eat breakfast**", options: ["wake up", "go to sleep", "eat breakfast", "brush teeth"], correct: 2, type: "phrase", audio: "i eat breakfast", image: "🥣" }
+            ],
+            'story-simple': [
+                { word: "The little mouse **ran** fast", options: ["ran", "sleeps", "flies", "jumps"], correct: 0, type: "story", audio: "the little mouse ran fast", image: "🐭" },
+                { word: "A friendly dog **barked** loudly", options: ["barked", "sang", "read", "danced"], correct: 0, type: "story", audio: "a friendly dog barked loudly", image: "🐕" }
+            ]
+        };
+
+        const level3Data = {
+            'grammar-game': [
+                { word: "I **have eaten** dinner.", options: ["Present Simple", "Past Simple", "Present Perfect", "Future Simple"], correct: 2, type: "grammar", audio: "i have eaten dinner", image: "🍽️" },
+                { word: "The car **was washed** by him.", options: ["Active Voice", "Passive Voice", "Future Perfect", "Conditional"], correct: 1, type: "grammar", audio: "the car was washed by him", image: "🧼" }
+            ],
+            'stories-game': [
+                { word: "The main character felt **joy** when...", options: ["Joy", "Sadness", "Anger", "Fear"], correct: 0, type: "story", audio: "the main character felt joy when", image: "📖" }
+            ],
+            'conversation-game': [
+                { word: "A: How are you? B: **I'm fine, thank you**", options: ["I'm fine, thank you", "My name is John", "I'm 10 years old", "I live in Madrid"], correct: 0, type: "conversation", audio: "how are you i'm fine thank you", image: "💬" },
+                { word: "A: What's your name? B: **My name is Maria**", options: ["My name is Maria", "I'm fine, thank you", "I'm 8 years old", "Nice to meet you"], correct: 0, type: "conversation", audio: "what's your name my name is maria", image: "💬" }
+            ],
+            'vocabulary-advanced': [
+                { word: "Delicious", options: ["Tastes good", "Tastes bad", "Smells good", "Smells bad"], correct: 0, type: "vocabulary", audio: "delicious", image: "😋" },
+                { word: "Exhausted", options: ["Very tired", "Very happy", "Very fast", "Very strong"], correct: 0, type: "vocabulary", audio: "exhausted", image: "😩" }
+            ],
+            // NUEVOS JUEGOS PREMIUM (Datos de ejemplo)
+            'trabalenguas': [
+                { word: "She sells seashells by the seashore.", options: ["Repetir", "Grabar", "Escribir", "Escuchar"], correct: 1, type: "pronunciation", audio: "She sells seashells by the seashore", image: "🗣️" },
+                { word: "Peter Piper picked a peck of pickled peppers.", options: ["Repetir", "Grabar", "Escribir", "Escuchar"], correct: 1, type: "pronunciation", audio: "Peter Piper picked a peck of pickled peppers", image: "🗣️" }
+            ],
+            'pares-minimos': [
+                { word: "Choose: Ship or Sheep?", options: ["Ship", "Sheep", "Ship", "Sheep"], correct: 1, type: "listening", audio: "sheep", image: "👂" }, // Asumimos que la opción correcta es el segundo sonido (sheep)
+                { word: "Choose: Live or Leave?", options: ["Live", "Leave", "Live", "Leave"], correct: 1, type: "listening", audio: "leave", image: "👂" } // Asumimos que la opción correcta es el segundo sonido (leave)
+            ]
+        };
+
+        // Datos para el examen final
+        const examData = [
+            { word: "What is the color of an apple?", options: ["Red", "Blue", "Green", "Yellow"], correct: 0, type: "exam" },
+            { word: "How do you say 'hola' in English?", options: ["Hello", "Goodbye", "Thank you", "Please"], correct: 0, type: "exam" },
+            { word: "Which animal says 'woof woof'?", options: ["Cat", "Dog", "Cow", "Bird"], correct: 1, type: "exam" },
+            { word: "What number comes after three?", options: ["Two", "Four", "Five", "Six"], correct: 1, type: "exam" },
+            { word: "Which is a fruit?", options: ["Carrot", "Broccoli", "Apple", "Potato"], correct: 2, type: "exam" },
+            { word: "How do you say 'gracias' in English?", options: ["Please", "Sorry", "Thank you", "Excuse me"], correct: 2, type: "exam" },
+            { word: "Which is a color?", options: ["Big", "Small", "Blue", "Fast"], correct: 2, type: "exam" },
+            { word: "What is the English word for 'casa'?", options: ["House", "Car", "School", "Park"], correct: 0, type: "exam" },
+            { word: "Which animal can fly?", options: ["Fish", "Bird", "Dog", "Cat"], correct: 1, type: "exam" },
+            { word: "How do you say 'adiós' in English?", options: ["Hello", "Goodbye", "Please", "Thank you"], correct: 1, type: "exam" }
+        ];
+
+        const pronunciationWords = [
+            { word: "Apple", image: "🍎" }, { word: "Elephant", image: "🐘" }, { word: "Jungle", image: "🌴" }, { word: "Window", image: "🖼️" }
+        ];
+
+        let currentGameData = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let lives = 3;
+        let gameActive = true;
+        let currentActivity = "";
+        let startTime;
+        let correctAnswers = 0;
+        let currentLevel = 1;
+        let wordsPracticed = 0;
+        let currentPronunciationIndex = 0;
+
+        // Variables para el examen
+        let examScore = 0;
+        let currentExamQuestionIndex = 0;
+        let examActive = false;
+
+        // Modal functionality (Login/Register)
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const startLearningBtn = document.getElementById('startLearningBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+        const minorOption = document.getElementById('minorOption');
+        const adultOption = document.getElementById('adultOption');
+        const parentEmailGroup = document.getElementById('parentEmailGroup');
+        const loginForm = document.getElementById('loginForm');
+
+        // Premium Functionality Variables (NUEVAS)
+        const premiumSection = document.getElementById('premium-section');
+        const getPremiumBtn = document.getElementById('getPremiumBtn');
+        const premiumModal = document.getElementById('premiumModal');
+        const closePremiumModal = document.getElementById('closePremiumModal');
+
+        // Modal functionality (Info Modals)
+        const aboutUsModal = document.getElementById('aboutUsModal');
+        const policiesModal = document.getElementById('policiesModal');
+        const closeAboutModal = document.getElementById('closeAboutModal');
+        const closePoliciesModal = document.getElementById('closePoliciesModal');
+        const infoModalLinks = document.querySelectorAll('.open-info-modal');
+
+        // Game functionality elements
+        const activityCards = document.querySelectorAll('.activity-card');
+        const playButtons = document.querySelectorAll('.play-activity');
+        const gameContainer = document.getElementById('gameContainer');
+        const pronunciationContainer = document.getElementById('pronunciationContainer');
+        const customPronunciationContainer = document.getElementById('customPronunciationContainer');
+        const closeGameBtn = document.getElementById('closeGame');
+        const closePronunciationBtn = document.getElementById('closePronunciation');
+        const closeCustomPronunciationBtn = document.getElementById('closeCustomPronunciation');
+        const wordCard = document.getElementById('wordCard');
+        const wordText = document.getElementById('wordText');
+        const audioBtn = document.getElementById('audioBtn');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const scoreElement = document.getElementById('score');
+        const livesElement = document.getElementById('lives');
+        const gameTitle = document.getElementById('gameTitle');
+        const gameInstruction = document.getElementById('gameInstruction');
+        const gameProgress = document.getElementById('gameProgress');
+
+        // Pronunciation game elements
+        const pronunciationImage = document.getElementById('pronunciationImage');
+        const pronunciationWord = document.getElementById('pronunciationWord');
+        const pronunciationAudioBtn = document.getElementById('pronunciationAudioBtn');
+        const nextWordBtn = document.getElementById('nextWordBtn');
+        const recordBtn = document.getElementById('recordBtn');
+        const resultFeedback = document.getElementById('resultFeedback');
+
+        // Custom pronunciation elements
+        const customWordInput = document.getElementById('customWordInput');
+        const speakCustomWordBtn = document.getElementById('speakCustomWordBtn');
+        const customWordCard = document.getElementById('customWordCard');
+        const customWordText = document.getElementById('customWordText');
+        const customAudioBtn = document.getElementById('customAudioBtn');
+
+        // Level Complete Modal elements
+        const levelCompleteModal = document.getElementById('levelCompleteModal');
+        const levelCompleteTitle = document.getElementById('levelCompleteTitle');
+        const levelCompleteMessage = document.getElementById('levelCompleteMessage');
+        const levelCompleteStats = document.getElementById('levelCompleteStats');
+        const playAgainBtn = document.getElementById('playAgainBtn');
+        const nextLevelBtn = document.getElementById('nextLevelBtn');
+
+        // Examen elements
+        const examLink = document.getElementById('examLink');
+        const examSection = document.getElementById('examSection');
+        const startExamBtn = document.getElementById('startExamBtn');
+        const examContainer = document.getElementById('examContainer');
+        const closeExamBtn = document.getElementById('closeExam');
+        const examProgress = document.getElementById('examProgress');
+        const examQuestionText = document.getElementById('examQuestionText');
+        const examOptionsContainer = document.getElementById('examOptionsContainer');
+        const currentQuestionElement = document.getElementById('currentQuestion');
+        const totalQuestionsElement = document.getElementById('totalQuestions');
+        const examScoreElement = document.getElementById('examScore');
+
+        // Certificate elements
+        const certificateModal = document.getElementById('certificateModal');
+        const closeCertificateModal = document.getElementById('closeCertificateModal');
+        const certificateStudentName = document.getElementById('certificateStudentName');
+        const certificateScore = document.getElementById('certificateScore');
+        const certificateDate = document.getElementById('certificateDate');
+        const printCertificateBtn = document.getElementById('printCertificateBtn');
+        const shareCertificateBtn = document.getElementById('shareCertificateBtn');
+
+        // Open/Close Modal function for Login/Register
+        function openLoginModal() {
+            loginModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLoginModal() {
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset form
+            loginForm.reset();
+            parentEmailGroup.style.display = 'none';
+            minorOption.classList.remove('selected');
+            adultOption.classList.remove('selected');
+        }
+
+        // Open/Close Info Modal function
+        function openInfoModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeInfoModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Event listeners for Login/Register Modal
+        loginBtn.addEventListener('click', openLoginModal);
+        registerBtn.addEventListener('click', openLoginModal);
+        startLearningBtn.addEventListener('click', openLoginModal);
+        closeModal.addEventListener('click', closeLoginModal);
+
+        // Event listeners for Info Modals
+        infoModalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = link.getAttribute('data-modal-id');
+                openInfoModal(modalId);
+            });
+        });
+        closeAboutModal.addEventListener('click', () => closeInfoModal('aboutUsModal'));
+        closePoliciesModal.addEventListener('click', () => closeInfoModal('policiesModal'));
+        
+        // Age selection logic
+        minorOption.addEventListener('click', () => {
+            minorOption.classList.add('selected');
+            adultOption.classList.remove('selected');
+            parentEmailGroup.style.display = 'block';
+        });
+
+        adultOption.addEventListener('click', () => {
+            minorOption.classList.remove('selected');
+            adultOption.classList.add('selected');
+            parentEmailGroup.style.display = 'none';
+        });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                // Add active class to the clicked button and content
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Start level buttons
+        const startLevelBtns = document.querySelectorAll('.start-level');
+        const activitiesLink = document.getElementById('activitiesLink');
+        const levelsLink = document.getElementById('levelsLink');
+        const activitiesSection = document.getElementById('activitiesSection');
+        const levelsSection = document.getElementById('levelsSection');
+
+        startLevelBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const level = btn.getAttribute('data-level');
+                if (level === '3') {
+                    // Muestra la sección Premium y hace scroll
+                    premiumSection.style.display = 'block';
+                    premiumSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // Scroll to activities section for other levels
+                    activitiesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        activitiesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            activitiesSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        levelsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            levelsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Footer links for scrolling
+        document.getElementById('footerLevelsLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            levelsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('footerActivitiesLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            activitiesSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('footerExamLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            examSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Exam link navigation
+        examLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            examSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Premium Modal Logic
+        getPremiumBtn.addEventListener('click', () => {
+            premiumModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        closePremiumModal.addEventListener('click', () => {
+            premiumModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Cerrar si se hace clic fuera del modal (para Premium Modal)
+        window.addEventListener('click', (event) => {
+            if (event.target == premiumModal) {
+                premiumModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (event.target == loginModal) {
+                closeLoginModal();
+            }
+            if (event.target == levelCompleteModal) {
+                closeLevelCompleteModal();
+            }
+            if (event.target == certificateModal) {
+                certificateModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Game functionality
+        playButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const activityCard = e.target.closest('.activity-card');
+                const activity = activityCard.getAttribute('data-activity');
+                const level = activityCard.getAttribute('data-level');
+
+                // Handle premium check for level 3 games
+                if (level === '3') {
+                    // For the purpose of this demo, we assume the user has premium for now.
+                    // In a real app, you would check a user's subscription status here.
+                    // For now, we will just proceed with the game setup.
+                }
+
+                if (activity === 'pronunciation-guided') {
+                    startPronunciationGuided();
+                } else if (activity === 'pronunciation-custom') {
+                    startCustomPronunciation();
+                } else {
+                    startGame(activity, level);
+                }
+            });
+        });
+
+        closeGameBtn.addEventListener('click', closeGame);
+        closePronunciationBtn.addEventListener('click', closePronunciation);
+        closeCustomPronunciationBtn.addEventListener('click', closeCustomPronunciation);
+        audioBtn.addEventListener('click', () => {
+            speakWord(wordText.textContent);
+        });
+
+        // Pronunciation controls listeners
+        pronunciationAudioBtn.addEventListener('click', () => {
+            speakWord(pronunciationWord.textContent);
+        });
+        
+        recordBtn.addEventListener('click', () => {
+            resultFeedback.textContent = "🎙️ Analizando pronunciación... (Funcionalidad avanzada)";
+            setTimeout(() => {
+                // Simulate a result
+                const isCorrect = Math.random() > 0.3;
+                if (isCorrect) {
+                    resultFeedback.textContent = "✅ ¡Excelente pronunciación!";
+                } else {
+                    resultFeedback.textContent = "❌ Intenta de nuevo. Más claro.";
+                }
+            }, 1500);
+        });
+
+        // Custom pronunciation functionality - CORREGIDA
+        speakCustomWordBtn.addEventListener('click', () => {
+            const word = customWordInput.value.trim();
+            if (word) {
+                customWordText.textContent = word;
+                customWordCard.style.display = 'flex';
+                speakWord(word);
+            } else {
+                alert('Por favor, escribe una palabra primero.');
+            }
+        });
+
+        customAudioBtn.addEventListener('click', () => {
+            speakWord(customWordText.textContent);
+        });
+
+        // Text-to-speech function
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1.2;
+                utterance.volume = 1;
+
+                // Ensure speech works by using a small delay
+                setTimeout(() => {
+                    speechSynthesis.speak(utterance);
+                }, 100);
+            } else {
+                alert('Tu navegador no soporta la función de audio. Prueba con Chrome o Edge.');
+            }
+        }
+
+        // Close game function
+        function closeGame() {
+            gameContainer.style.display = 'none';
+            pronunciationContainer.style.display = 'none';
+            customPronunciationContainer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset game state
+            gameActive = false;
+            currentGameData = [];
+        }
+
+        // Close pronunciation function
+        function closePronunciation() {
+            pronunciationContainer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close custom pronunciation function
+        function closeCustomPronunciation() {
+            customPronunciationContainer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            customWordInput.value = '';
+            customWordCard.style.display = 'none';
+        }
+
+        // Close level complete modal function
+        function closeLevelCompleteModal() {
+            levelCompleteModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Helper function to get next activity
+        function getNextActivity(currentActivity, currentLevel) {
+            const activitiesByLevel = {
+                1: ['abc-game', 'colors-game', 'numbers-game', 'pets-game', 'greetings-game', 'family-game', 'food-game', 'toys-game'],
+                2: ['adjectives-game', 'prepositions-game', 'tenses-basic-game', 'question-game', 'daily-routine', 'story-simple'],
+                3: ['grammar-game', 'stories-game', 'conversation-game', 'vocabulary-advanced', 'trabalenguas', 'pares-minimos']
+            };
+            
+            const levelActivities = activitiesByLevel[currentLevel] || [];
+            const currentIndex = levelActivities.indexOf(currentActivity);
+            
+            if (currentIndex === -1 || currentIndex >= levelActivities.length - 1) {
+                // Si es la última actividad del nivel, volver a la primera
+                return levelActivities[0] || currentActivity;
+            }
+            
+            return levelActivities[currentIndex + 1];
+        }
+
+        // Start a new game function
+        function startGame(activityType, level) {
+            // Reset game variables
+            currentQuestionIndex = 0;
+            score = 0;
+            lives = 3;
+            gameActive = true;
+            currentActivity = activityType;
+            correctAnswers = 0;
+            startTime = Date.now();
+
+            // Set current level
+            if (level) {
+                currentLevel = parseInt(level);
+            }
+
+            // Handle different activity types
+            if (currentLevel === 1) currentGameData = level1Data[activityType];
+            else if (currentLevel === 2) currentGameData = level2Data[activityType];
+            else if (currentLevel === 3) currentGameData = level3Data[activityType];
+
+            if (!currentGameData || currentGameData.length === 0) {
+                alert("¡Ups! Datos de juego no encontrados o incompletos.");
+                closeGame();
+                return;
+            }
+
+            // Set game title
+            let activityTitle = "";
+            if (activityType === 'abc-game') activityTitle = "Abecedario Inglés";
+            else if (activityType === 'colors-game') activityTitle = "Colores Básicos";
+            else if (activityType === 'numbers-game') activityTitle = "Números del 1 al 10";
+            else if (activityType === 'pets-game') activityTitle = "Animales Domésticos";
+            else if (activityType === 'greetings-game') activityTitle = "Saludos y Despedidas";
+            else if (activityType === 'family-game') activityTitle = "Mi Familia";
+            else if (activityType === 'food-game') activityTitle = "Comida Básica";
+            else if (activityType === 'toys-game') activityTitle = "Mis Juguetes";
+            else if (activityType === 'adjectives-game') activityTitle = "Adjetivos Descriptivos";
+            else if (activityType === 'prepositions-game') activityTitle = "Preposiciones de Lugar";
+            else if (activityType === 'tenses-basic-game') activityTitle = "Presente Simple";
+            else if (activityType === 'question-game') activityTitle = "Hacer Preguntas";
+            else if (activityType === 'daily-routine') activityTitle = "Rutina Diaria";
+            else if (activityType === 'story-simple') activityTitle = "Mini Historias";
+            else if (activityType === 'grammar-game') activityTitle = "Tiempos Verbales";
+            else if (activityType === 'stories-game') activityTitle = "Cuentos Cortos";
+            else if (activityType === 'conversation-game') activityTitle = "Diálogos Completos";
+            else if (activityType === 'vocabulary-advanced') activityTitle = "Vocabulario Avanzado";
+            else if (activityType === 'trabalenguas') activityTitle = "Trabalenguas";
+            else if (activityType === 'pares-minimos') activityTitle = "Pares Mínimos";
+            
+            gameTitle.textContent = `${activityTitle} - Nivel ${currentLevel}`;
+
+            // Show game container
+            gameContainer.style.display = 'block';
+            pronunciationContainer.style.display = 'none';
+            customPronunciationContainer.style.display = 'none';
+
+            // Update UI
+            updateScore();
+            updateLives();
+            loadQuestion();
+        }
+
+        // Load a question function
+        function loadQuestion() {
+            if (currentQuestionIndex >= currentGameData.length) {
+                endGame();
+                return;
+            }
+            
+            const question = currentGameData[currentQuestionIndex];
+            wordText.textContent = question.word;
+
+            // Set instruction based on question type
+            if (question.type === 'letter') {
+                gameInstruction.textContent = "Selecciona la letra correcta:";
+            } else if (question.type === 'color') {
+                gameInstruction.textContent = "Selecciona el color correcto:";
+            } else if (question.type === 'number') {
+                gameInstruction.textContent = "Selecciona el número correcto:";
+            } else if (question.type === 'pet' || question.type === 'toy' || question.type === 'food') {
+                gameInstruction.textContent = "Selecciona la imagen correcta:";
+            } else if (question.type === 'phrase' || question.type === 'conversation') {
+                gameInstruction.textContent = "Completa la frase o diálogo:";
+            } else if (question.type === 'grammar') {
+                gameInstruction.textContent = "Selecciona la opción gramatical correcta:";
+            } else if (question.type === 'story') {
+                gameInstruction.textContent = "Completa el espacio en la historia:";
+            } else if (currentActivity === 'trabalenguas') {
+                gameInstruction.textContent = "¡Escucha y Graba el trabalenguas para practicar!";
+            } else if (currentActivity === 'pares-minimos') {
+                gameInstruction.textContent = "Escucha atentamente y elige la palabra que oíste:";
+            } else {
+                gameInstruction.textContent = "Selecciona la opción correcta:";
+            }
+            
+            // Generate options
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.classList.add('option-btn');
+                btn.textContent = option;
+                btn.addEventListener('click', () => checkAnswer(index));
+                optionsContainer.appendChild(btn);
+            });
+
+            // Update progress bar
+            const progress = ((currentQuestionIndex + 1) / currentGameData.length) * 100;
+            gameProgress.style.width = `${progress}%`;
+
+            // Auto-speak the word/phrase on load
+            if (currentActivity !== 'trabalenguas' && currentActivity !== 'pares-minimos') {
+                speakWord(question.word);
+            }
+        }
+
+        // Check answer function
+        function checkAnswer(selectedIndex) {
+            if (!gameActive) return;
+
+            const question = currentGameData[currentQuestionIndex];
+            const optionBtns = optionsContainer.querySelectorAll('.option-btn');
+            
+            // Disable all buttons immediately
+            optionBtns.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === question.correct) {
+                // Correct answer
+                optionBtns[selectedIndex].classList.add('correct');
+                score += 10;
+                correctAnswers++;
+                updateScore();
+            } else {
+                // Incorrect answer
+                optionBtns[selectedIndex].classList.add('incorrect');
+                optionBtns[question.correct].classList.add('correct'); // Highlight correct answer
+                lives--;
+                updateLives();
+                if (lives <= 0) {
+                    // Game over
+                    setTimeout(endGame, 1500);
+                    return;
+                }
+            }
+
+            // Move to next question after a delay
+            setTimeout(() => {
+                currentQuestionIndex++;
+                loadQuestion();
+                optionBtns.forEach(btn => btn.disabled = false); // Re-enable buttons
+            }, 1500);
+        }
+
+        // Update score and lives
+        function updateScore() {
+            scoreElement.textContent = score;
+        }
+
+        function updateLives() {
+            livesElement.innerHTML = '';
+            for (let i = 0; i < lives; i++) {
+                livesElement.innerHTML += '<i class="fas fa-heart" style="color: var(--primary);"></i> ';
+            }
+        }
+
+        // End game function (CORREGIDA)
+        function endGame() {
+            gameActive = false;
+            gameContainer.style.display = 'none';
+
+            const timeSpent = Math.round((Date.now() - startTime) / 1000); // Time in seconds
+            const totalQuestions = currentGameData.length;
+            const percentage = ((correctAnswers / totalQuestions) * 100).toFixed(0);
+
+            // Set modal content
+            if (lives > 0) {
+                levelCompleteTitle.textContent = "¡Nivel Completado!";
+                levelCompleteMessage.textContent = `¡Felicidades! Has respondido correctamente a ${correctAnswers} de ${totalQuestions} preguntas.`;
+            } else {
+                levelCompleteTitle.textContent = "¡Fin del Juego!";
+                levelCompleteMessage.textContent = `Se te acabaron las vidas. Intentálo de nuevo para mejorar tu puntuación.`;
+            }
+
+            levelCompleteStats.innerHTML = `Puntuación Final: <strong>${score}</strong> | Precisión: <strong>${percentage}%</strong> | Tiempo: <strong>${timeSpent}s</strong>`;
+
+            levelCompleteModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Event listeners for level complete modal (CORREGIDOS)
+        playAgainBtn.addEventListener('click', () => {
+            levelCompleteModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // IMPORTANTE: Restaurar scroll
+            startGame(currentActivity, currentLevel);
+        });
+
+        nextLevelBtn.addEventListener('click', () => {
+            levelCompleteModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // IMPORTANTE: Restaurar scroll
+            
+            if (currentLevel < 3) {
+                currentLevel++;
+                const nextActivity = getNextActivity(currentActivity, currentLevel);
+                
+                setTimeout(() => {
+                    startGame(nextActivity, currentLevel);
+                }, 300);
+            } else {
+                // Si está en nivel 3 (premium)
+                setTimeout(() => {
+                    premiumSection.style.display = 'block';
+                    premiumSection.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        });
+
+        // Pronunciation Guided Logic
+        function startPronunciationGuided() {
+            currentPronunciationIndex = 0;
+            pronunciationContainer.style.display = 'block';
+            gameContainer.style.display = 'none';
+            customPronunciationContainer.style.display = 'none';
+            loadPronunciationWord();
+        }
+
+        function loadPronunciationWord() {
+            if (currentPronunciationIndex >= pronunciationWords.length) {
+                alert("¡Felicidades! Has practicado todas las palabras guiadas.");
+                closePronunciation();
+                return;
+            }
+            const wordData = pronunciationWords[currentPronunciationIndex];
+            pronunciationWord.textContent = wordData.word;
+            pronunciationImage.innerHTML = wordData.image;
+
+            const progress = ((currentPronunciationIndex + 1) / pronunciationWords.length) * 100;
+            document.getElementById('pronunciationProgress').style.width = `${progress}%`;
+            resultFeedback.textContent = "";
+        }
+
+        // Event listeners for pronunciation game
+        nextWordBtn.addEventListener('click', () => {
+            currentPronunciationIndex++;
+            loadPronunciationWord();
+        });
+
+        // Custom Pronunciation Logic
+        function startCustomPronunciation() {
+            customPronunciationContainer.style.display = 'block';
+            gameContainer.style.display = 'none';
+            pronunciationContainer.style.display = 'none';
+            customWordInput.value = '';
+            customWordCard.style.display = 'none';
+        }
+
+        // EXAMEN FUNCTIONALITY
+        startExamBtn.addEventListener('click', startExam);
+        closeExamBtn.addEventListener('click', closeExam);
+
+        function startExam() {
+            examScore = 0;
+            currentExamQuestionIndex = 0;
+            examActive = true;
+            
+            examContainer.style.display = 'block';
+            gameContainer.style.display = 'none';
+            pronunciationContainer.style.display = 'none';
+            customPronunciationContainer.style.display = 'none';
+            
+            totalQuestionsElement.textContent = examData.length;
+            updateExamScore();
+            loadExamQuestion();
+        }
+
+        function closeExam() {
+            examContainer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            examActive = false;
+        }
+
+        function loadExamQuestion() {
+            if (currentExamQuestionIndex >= examData.length) {
+                endExam();
+                return;
+            }
+            
+            const question = examData[currentExamQuestionIndex];
+            examQuestionText.textContent = question.word;
+            
+            // Generate options
+            examOptionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.classList.add('option-btn');
+                btn.textContent = option;
+                btn.addEventListener('click', () => checkExamAnswer(index));
+                examOptionsContainer.appendChild(btn);
+            });
+            
+            // Update progress
+            currentQuestionElement.textContent = currentExamQuestionIndex + 1;
+            const progress = ((currentExamQuestionIndex + 1) / examData.length) * 100;
+            examProgress.style.width = `${progress}%`;
+        }
+
+        function checkExamAnswer(selectedIndex) {
+            if (!examActive) return;
+            
+            const question = examData[currentExamQuestionIndex];
+            const optionBtns = examOptionsContainer.querySelectorAll('.option-btn');
+            
+            // Disable all buttons immediately
+            optionBtns.forEach(btn => btn.disabled = true);
+            
+            if (selectedIndex === question.correct) {
+                // Correct answer
+                optionBtns[selectedIndex].classList.add('correct');
+                examScore += 10;
+                updateExamScore();
+            } else {
+                // Incorrect answer
+                optionBtns[selectedIndex].classList.add('incorrect');
+                optionBtns[question.correct].classList.add('correct'); // Highlight correct answer
+            }
+            
+            // Move to next question after a delay
+            setTimeout(() => {
+                currentExamQuestionIndex++;
+                loadExamQuestion();
+                optionBtns.forEach(btn => btn.disabled = false); // Re-enable buttons
+            }, 1500);
+        }
+
+        function updateExamScore() {
+            examScoreElement.textContent = examScore;
+        }
+
+        function endExam() {
+            examActive = false;
+            examContainer.style.display = 'none';
+            
+            // Show certificate
+            showCertificate();
+        }
+
+        function showCertificate() {
+            // Set certificate details
+            const studentName = prompt("¡Felicidades! Has completado el examen. Por favor, ingresa tu nombre para el certificado:", "Estudiante de Chatter Kid");
+            
+            if (studentName) {
+                certificateStudentName.textContent = studentName;
+                certificateScore.textContent = `Puntuación: ${examScore}/100`;
+                
+                const today = new Date();
+                const formattedDate = today.toLocaleDateString('es-ES', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                certificateDate.textContent = formattedDate;
+                
+                certificateModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Certificate functionality
+        closeCertificateModal.addEventListener('click', () => {
+            certificateModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        printCertificateBtn.addEventListener('click', () => {
+            // Create a new window for printing
+            const printWindow = window.open('', '_blank');
+            const certificateContent = document.getElementById('certificateContent').innerHTML;
+            
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Certificado Chatter Kid</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+                        .certificate { border: 15px solid #f0e6d2; padding: 40px; text-align: center; }
+                        .certificate-title { font-size: 36px; color: #300d3c; margin-bottom: 10px; }
+                        .certificate-subtitle { font-size: 20px; color: #3b95b0; margin-bottom: 30px; }
+                        .certificate-student { font-size: 28px; margin-bottom: 20px; }
+                        .certificate-score { font-size: 24px; color: #a9d606; margin-bottom: 30px; }
+                    </style>
+                </head>
+                <body>
+                    ${certificateContent}
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            printWindow.print();
+        });
+
+        shareCertificateBtn.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mi Certificado de Chatter Kid',
+                    text: `¡He completado el examen de Chatter Kid con una puntuación de ${examScore}/100!`,
+                    url: window.location.href
+                })
+                .catch(error => console.log('Error al compartir:', error));
+            } else {
+                alert('Tu navegador no soporta la función de compartir. Puedes hacer una captura de pantalla del certificado.');
+            }
+        });
+
+        // Initialize the page
+        window.addEventListener('DOMContentLoaded', () => {
+            // Hide game containers and modals initially
+            gameContainer.style.display = 'none';
+            pronunciationContainer.style.display = 'none';
+            customPronunciationContainer.style.display = 'none';
+            examContainer.style.display = 'none';
+            levelCompleteModal.style.display = 'none';
+            aboutUsModal.style.display = 'none';
+            policiesModal.style.display = 'none';
+            premiumModal.style.display = 'none';
+            certificateModal.style.display = 'none';
+            premiumSection.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
